@@ -126,11 +126,12 @@ def play_game(first_player: Player, second_player: Player) -> Player:
 
         round += 1
         print(
-            f"Result:\n{first_player.name} has {len(first_player.cards)} cards and {len(first_player_stash)} in stash/n{second_player.name} has {len(second_player.cards)} cards and {len(second_player_stash)} in stash"
+            f"Result:\n{first_player.name} has {len(first_player.cards)} cards and {len(first_player_stash)} in stash\n{second_player.name} has {len(second_player.cards)} cards and {len(second_player_stash)} in stash\n"
         )
 
 
-def play_war(first_player: Player, second_player: Player) -> Player: ...
+def play_war(first_player: Player, second_player: Player) -> Player: 
+    ...
 
 
 if __name__ == "__main__":
