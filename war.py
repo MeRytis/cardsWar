@@ -123,6 +123,11 @@ def play_game(first_player: Player, second_player: Player) -> Player:
             print(
                 f"Round {round}:\n{second_player.name} card {second_player_card} is higher than {first_player.name} card {first_player_card}"
             )
+        elif RANKS.index(first_player_card.rank) == RANKS.index(second_player_card.rank) and len(first_player.cards) > 1 and len(second_player.cards)  :
+            play_war(first_player, second_player,round, first_player_stash, second_player_stash, first_player_card, second_player_card)
+                    
+        else:
+            break            
 
         round += 1
         print(
@@ -130,8 +135,35 @@ def play_game(first_player: Player, second_player: Player) -> Player:
         )
 
 
-def play_war(first_player: Player, second_player: Player) -> Player: 
-    ...
+def play_war(first_player: Player, second_player: Player, round, first_player_stash, second_player_stash, first_player_card, second_player_card) -> Player: 
+    
+    print("WAR!")
+    
+    war_cards = []
+            
+    while first_player_card == second_player_card:
+        war_cards.extend([first_player_card, second_player_card])            
+        first_player_card = first_player.cards.pop()
+        second_player_card = second_player.cards.pop()
+        if RANKS.index(first_player_card.rank) > RANKS.index(second_player_card.rank):
+            first_player_stash.extend(war_cards)
+            
+            print(
+                f"Round {round}:\n{first_player.name} card {first_player_card} is higher than {second_player.name} card {second_player_card}"
+            )
+        else:
+            second_player_stash.extend(war_cards)        
+            print(
+                    f"Round {round}:\n{second_player.name} card {second_player_card} is higher than {first_player.name} card {first_player_card}"
+                )
+        
+    print(
+            f"Result:\n{first_player.name} has {len(first_player.cards)} cards and {len(first_player_stash)} in stash\n{second_player.name} has {len(second_player.cards)} cards and {len(second_player_stash)} in stash\n"
+        )
+        
+        
+
+    
 
 
 if __name__ == "__main__":
